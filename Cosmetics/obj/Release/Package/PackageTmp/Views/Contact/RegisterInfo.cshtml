@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewBag.Title = "Góp Ý";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    NongSan.Models.NongSanEntities db = new NongSan.Models.NongSanEntities();
+    var page = db.Settings.FirstOrDefault();
+}
+<div class="breadcrumb_background margin-bottom-40">
+    <div class="title_full">
+        <div class="container a-center">
+            <p class="title_page">Góp Ý</p>
+        </div>
+    </div>
+    <section class="bread-crumb">
+        <span class="crumb-border"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 a-center">
+                    <ul class="breadcrumb">
+                        <li class="home">
+                            <a href="/"><span>Trang chủ</span></a>
+                            <span class="mr_lr">&nbsp;<i class="fa fa-angle-right"></i>&nbsp;</span>
+                        </li>
+
+
+                        <li><strong><span>Góp Ý</span></strong></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="container">
+    <div class="form-signup clearfix margin-bottom-30">
+        <p>Xin để lại lời nhắn bên dưới: </p>
+        <div class="row group_contact">
+            <form id="contactForm">
+
+                <fieldset class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="validation-advice" id="validateName" style="display:none">Vui lòng nhập họ tên</div>
+                    <input placeholder="Xin để lại tên hoặc nickname nếu bạn không phiền" type="text" class="form-control  form-control-lg" required="" value="" name="Name" id="Name">
+
+                </fieldset>
+                <fieldset class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="validation-advice" id="validatePhone" style="display:none">Vui lòng nhập số điện thoại</div>
+                    <input placeholder="Xin cho phép chúng tôi xin số điện thoại nếu bạn cần trao đổi bằng số điện thoại" type="text" required="" id="Phone" class="form-control form-control-lg" value="" name="Phone">
+
+                </fieldset>
+                <fieldset class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="validation-advice" id="validateEmail" style="display:none">Vui lòng nhập Email</div>
+                    <input placeholder="Xin cho phép chúng tôi xin địa chỉ Email nếu bạn cần trao đổi nhiều hơn" type="text" required="" id="Email" class="form-control form-control-lg" value="" name="Email">
+
+                </fieldset>
+                <fieldset class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="validation-advice" id="validateContent" style="display:none">Vui lòng nhập nội dung</div>
+                    <textarea placeholder="Và cuối cùng, xin để lại lời nhắn tại đây" name="Content" id="Content" class="form-control content-area form-control-lg" rows="5" required=""></textarea>
+
+                </fieldset>
+            </form>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button type="submit" class="btn btn-primary btn-comment button_gradient" onclick="saveContact()">Gửi thông điệp</button>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-12">
+                <p style="margin-top:20px">
+                    Xin chân thành cảm ơn lời nhắn gửi hoặc lời góp ý của bạn. Sự đóng góp này của bạn sẽ giúp chúng tôi cải thiện chất lượng dịch vụ của mình ngày một tốt.<br />
+                    Ngoài ra bạn muốn liên lạc để nhận được sự hỗ trợ ngay, xin liên hệ với chung thôi theo:<br />
+                    <ul>
+                        <li>Hotline: @page.PhoneNumber</li>
+                        <li>Email: @page.Email</li>
+                    </ul>
+                </p>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+<style>
+    .validation-failed {
+        border: 1px dashed #eb340a !important;
+        background: #faebe7 !important;
+    }
+
+    .validation-advice {
+        clear: both;
+        margin: 3px 0 0;
+        font-weight: normal;
+        line-height: 13px;
+        color: #eb340a;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script>
+    function resetForm() {
+          $('#Phone').removeClass("validation-failed");
+        $('#validatePhone').css("display", "none");
+          $('#Email').removeClass("validation-failed");
+        $('#validateEmail').css("display", "none");
+          $('#Content').removeClass("validation-failed");
+        $('#validateContent').css("display", "none");
+    }
+    function validateContact() {
+        resetForm();
+
+    var check = true;
+
+ 
+
+        if ($('#Phone').val() == "") {
+            if ($('#Email').val() == "") {
+                $('#Phone').addClass("validation-failed");
+                $('#validatePhone').css("display", "block");
+
+                  $('#Email').addClass("validation-failed");
+                $('#validateEmail').css("display", "block");
+
+                check = false
+            }
+            else {
+                $('#Phone').removeClass("validation-failed");
+                $('#validatePhone').css("display", "none");
+                 $('#Email').removeClass("validation-failed");
+                $('#validateEmail').css("display", "none");
+            }
+        }
+        
+        if ($('#Email').val() == "") {
+            if ($('#Phone').val() == "") {
+                $('#Phone').addClass("validation-failed");
+                $('#validatePhone').css("display", "block");
+                check = false
+            }
+            else {
+                $('#Phone').removeClass("validation-failed");
+                $('#validatePhone').css("display", "none");
+                $('#Email').removeClass("validation-failed");
+                $('#validateEmail').css("display", "none");
+            }
+        }
+        
+         
+
+    if ($('#Content').val() == "") {
+        $('#Content').addClass("validation-failed");
+        $('#validateContent').css("display", "block");
+        check = false
+    }
+    else {
+        $('#Content').removeClass("validation-failed");
+        $('#validateContent').css("display", "none");
+    }
+
+    return check;
+    }
+
+
+    function saveContact() {
+        var check = validateContact();
+        if (check) {
+
+
+             var fd = new FormData(document.getElementById("contactForm"));
+            $.ajax({
+                url: "@Url.Content("/Contact/SaveContact")",
+                type: "POST",
+                data: fd,
+                enctype: 'multipart/form-data',
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,   // tell jQuery not to set contentType.
+                success: function (data) {
+                    if (data.Code == 1) {
+                        $('#contactForm')[0].reset();
+                       Swal.fire(
+                      'Thành Công!',
+                      'Cám ơn bạn đã liên hệ. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất!',
+                      'success'
+                    )
+                    }
+                    else {
+                         Swal.fire(
+                'Thất Bại',
+                'Thất bại',
+                'warning'
+            )
+                    }
+
+                }
+            });
+        }
+          }
+</script>

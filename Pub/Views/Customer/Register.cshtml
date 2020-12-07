@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="breadcrumb">
+    <div class="container">
+        <h2 class="title">Create Account</h2>
+
+        <ul class="breadcrumb">
+            <li><a href="#" title="Home">Home</a></li>
+            <li><span>Create Account</span></li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="register-page">
+        <div class="register-form form">
+            <div class="block-title">
+                <h2 class="title"><span>Create Account</span></h2>
+            </div>
+
+            <form id="frmRegister">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" value="" class="form-control" name="Name" id="Name">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" class="form-control" name="Phone" id="Phone">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="Email" id="Email">
+                </div>
+                <div class="form-group">
+                    <label>UserName</label>
+                    <input type="text" class="form-control" id="UserName" name="UserName">
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="PassWord" id="Password">
+                </div>
+
+                <div class="form-group text-center">
+                    <input type="button" onclick="fnRegister()" class="btn btn-primary" value="Create Account">
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<script>
+    function validateEmail(mail)
+{
+ if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
+  {
+    return (true)
+  }
+
+    return (false)
+}
+    function validateContact() {
+
+    var check = true;
+
+        if ($('#Name').val() == "") {
+            toastr.error('Please enter your full name');
+              check = false
+        }
+         if ($('#Phone').val() == "") {
+            toastr.error('Please enter your Phone');
+              check = false
+        }
+        if ($('#UserName').val() == "") {
+            toastr.error('Please enter your Username');
+              check = false
+        }
+
+        if ($('#Password').val() == "") {
+            toastr.error('Please enter your Password');
+              check = false
+        }
+          if ($('#Email').val() == "") {
+            toastr.error('Please enter your Email');
+              check = false
+        }
+        if (!validateEmail($('#Email').val())) {
+             toastr.error('Email invalidate');
+              check = false
+        }
+
+
+    return check;
+    }
+
+
+    function fnRegister() {
+        var check = validateContact();
+        if (check) {
+             var fd = new FormData(document.getElementById("frmRegister"));
+            $.ajax({
+                url: "@Url.Content("/Customer/SaveRegister")",
+                type: "POST",
+                data: fd,
+                enctype: 'multipart/form-data',
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,   // tell jQuery not to set contentType.
+                success: function (data) {
+                    if (data.Code == -1) {
+                        toastr.error('Username already exists in the system')
+                    }
+                    else if (data.Code == 0) {
+                        toastr.error('system error')
+                    }
+                    else {
+                        toastr.success('Register Success')
+                           window.location = "/Customer/Login";
+
+                    }
+
+        }
+     });
+    }
+   }
+</script>

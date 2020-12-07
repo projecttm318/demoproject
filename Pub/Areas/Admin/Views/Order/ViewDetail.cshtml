@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;
+}
+
+
+<style>
+    #tbStatusOrderDetail > tbody > tr:nth-of-type(odd) {
+        background-color: #f9f9f9 !important;
+    }
+
+    #tbOrderDetail_length {
+        display: none;
+    }
+</style>
+
+
+<table id="tbOrderDetail" class="table table-striped" cellspacing="0">
+
+    <thead>
+        <tr>
+            <th>Hình Ảnh</th>
+            <th>Tên Sản Phẩm</th>
+            <th>Giá</th>
+            <th>Số Lượng</th>
+            <th>Tổng Tiền</th>
+           
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<script>
+
+    $(document).ready(function () {
+        loadDetail();
+    });
+    var tabledetail=null;
+    function loadDetail() {
+        tabledetail = $('#tbOrderDetail').DataTable({
+            pageLength: 25,
+            "bDestroy": true,
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "/Admin/Order/GetListOrderDetail",
+                "type": "POST",
+                "data": function (d) {
+                    return $.extend({}, d, {
+                        'ParentID':  @ViewData["ParentID"],
+                    })
+                }
+            },
+            "columns": [
+                 {
+                     "data": "Image",
+                     'render': function (data, type, full, meta) {
+                         var html ="";
+                         html+='<img src="'+full.Image+'" style="widht:50px;height:50px"/>';
+                         return html;
+                     }
+                 },
+                        { "data": "ProductName"},
+                          {
+                              'render': function (data, type, full, meta) {
+                                  var html =showMoney(full.Price);
+                                  return html;
+                              }
+                          },
+                           {
+                               'render': function (data, type, full, meta) {
+                                   var html ='<a href="#">' + full.Quantity + '</a>';
+                                   return html;
+                               }
+                           },
+                             {
+                                 'render': function (data, type, full, meta) {
+                                     var html =showMoney(full.Price * full.Quantity);
+                                     return html;
+                                 }
+                             },
+
+                      
+            ],
+            "paging": true,
+            "lengthChange": true,
+            "searching": false,
+            "ordering": false,
+            "info": false,
+            "autoWidth": false,
+            "dom": '<"top"i>rt<"bottom row"<"col-md-3"l><"col-md-9"<"pullright"p>>><"clear">',
+        })
+    }
+</script>

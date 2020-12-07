@@ -1,0 +1,64 @@
+﻿@model NongSan.Models.About
+@{
+    ViewBag.Title = "AddEditAbout";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="box box-info">
+    <div class="box-header with-border">
+      
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        @using (Html.BeginForm("AddEditAbout", "About", FormMethod.Post))
+        {
+            <input type="hidden" name="mode" value="@ViewData["Mode"]" />
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <div class="col-sm-12 col-md-12 col-lg-12">
+
+                <div class="form-group">
+                    <label for="NoiDung">Tên</label>
+                    <input type="text" class="form-control" required="" name="Title" id="Title" placeholder="Tên Sản Phẩm" tabindex="6" value="@Model.Title">
+                </div>
+                
+                <div class="form-group">
+                    <label for="NoiDung">Nội Dung</label>
+                    <textarea rows="2" style="resize: none;" class="form-control" name="Content" id="Content" placeholder="Ghi chú" tabindex="7">@Model.Content</textarea>
+                </div>
+            </div>
+            <input type="submit" value="Thêm Mới" class="pull-right" />
+        }
+    </div>
+</div>
+
+
+@section scripts
+{
+
+    <script>
+        $(document).ready(function () {
+            var ckeditor;
+            function createEditor(languageCode, id) {
+                var editor = CKEDITOR.replace(id, { language: languageCode });
+            }
+            $(function () {
+                createEditor('vi', 'Content')
+            });
+        })
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#Avartar').val(url);
+            };
+            finder.popup();
+        })
+      
+    </script>
+}
+

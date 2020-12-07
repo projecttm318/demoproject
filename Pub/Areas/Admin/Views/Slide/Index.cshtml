@@ -1,0 +1,228 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Quản Lý Danh Mục Sản Phẩm</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="tbCategory" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Tên</th>
+                                <th>Hình Ảnh</th>
+                                <th><button type="button" data-toggle="modal" data-target="#ModalSlide" onclick="UpdateSlide(this, null)" class="btn btn-success btn-xs" style="text-align:center"><i class="fa fa-plus" style="color:white" aria-hidden="true"></i></button></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<div class="modal fade" id="ModalSlide" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <form id="SlideForm">
+
+                <div class="modal-body">
+                    <input type="hidden" name="Id" id="Id" value="" />
+                    <input type="hidden" name="mode" id="mode" value="" />
+                    <div class="form-group">
+                        <label for="Name">Tên</label>
+                        <input type="text" class="form-control" required id="Title" name="Title" placeholder="Tên" tabindex="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="Name">Url</label>
+                        <input type="text" class="form-control" required id="Url" name="Url" placeholder="Url" tabindex="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="Name">Thứ Tự</label>
+                        <input type="number" class="form-control" required id="Ord" name="Ord" placeholder="Thứ Tự" tabindex="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PhoneNumber">Hình Ảnh</label><br />
+                        <img id="ImagePro" style="width:100%" />
+
+                        <input type="file" style="display:none" name="fileUpload" id="file" onchange="uploadIamge()" />
+                        <div class="input-group input-group pull-right" style="margin-top:10px">
+                            <input class="form-control" type="text" name="Image" id="Image" placeholder="Nhập url hình ảnh" />
+                            <span class="input-group-btn">
+                                <label type="button" class="btn bg-green-custom btn-flat" for="file">
+                                    ...
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" tabindex="3" onclick="saveSlide()">Lưu</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="4">
+                        Hủy
+                    </button>
+                    <div tabindex="5" onfocus="document.querySelector('[autofocus]').focus()"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            LoadTable();
+        });
+        function LoadTable() {
+            $.ajax({
+                type: "POST",
+                url: '/Admin/Slide/GetListSlide',
+                success: function (data) {
+                    $('#tbCategory').DataTable({
+                        data: data,
+                        destroy: true,
+                        columns: [
+                                    { "data": "Title" },
+                                     {
+                                         "data": "Image",
+                                         width: '30%',
+                                         'render': function (data, type, full, meta) {
+                                             var html = '<img src="' + full.Image + '" style="width:50px;width:50px"/>';
+                                             return html;
+                                         }
+                                     },
+                                    {
+                                        targets: 'no-sort',
+                                        orderable: false,
+                                        'class': 'text-center',
+                                        'width': '10%',
+                                        'render': function (data, type, full, meta) {
+                                            var html = ' <button type="button" data-toggle="modal" data-target="#ModalSlide" class="btn btn-primary btn-xs" title="Cập Nhật"  onclick="UpdateSlide(this,' + full.Id + ')"><i class="fa  fa-database"></i></button> ' +
+                                                        ' <button type="button" title="Xóa" class="btn  btn-danger btn-xs" onclick="Remove(this,' + full.Id + ')"><i class="fa fa-trash"></i></button> ';
+                                            return html;
+                                        }
+                                    }
+                        ],
+
+                    });
+                }
+            });
+
+        }
+
+        function UpdateSlide(thiz, id) {
+            if (id == null) {
+                $('.modal-title').html('Thêm mới Danh Mục Sản Phẩm');
+                $('#mode').val('ADD');
+            } else {
+                var table = $('#tbCategory').DataTable();
+                var data = table.row($(thiz).parent().parent()).data();
+                $('.modal-title').html('Cập nhật Danh Mục Sản Phẩm');
+                $('#mode').val('UPDATE');
+                $('#Id').val(data.Id);
+                $('#Title').val(data.Title);
+                $('#Ord').val(data.Ord);
+                $('#Caption').val(data.Caption);
+                $('#Image').val(data.Image);
+                $('#ImagePro').attr("src", data.Image)
+            }
+        }
+        function Remove(thiz, id) {
+            (new PNotify({
+                title: 'Xác nhận',
+                text: 'Bạn muốn xóa Danh mục ?',
+                icon: 'glyphicon glyphicon-question-sign',
+                styling: 'bootstrap3',
+                hide: false,
+                confirm: {
+                    confirm: true
+                },
+                buttons: {
+                    closer: false,
+                    sticker: false
+                },
+                history: {
+                    history: false
+                }
+            })).get().on('pnotify.confirm', function () {
+                $.ajax({
+                    type: "POST",
+                    url: '/Admin/Slide/Delete',
+                    data: { id: id },
+                    success: function (data) {
+                        if (data.Code === 1) {
+                            $('#tbCategory').DataTable().row($(thiz).parents('tr')).remove().draw();
+                            showSuccess(data.message);
+                        } else {
+                            showError(data.message);
+                        }
+
+                    }
+                });
+            }).on('pnotify.cancel', function () {
+            });
+        }
+        function uploadIamge() {
+            var formData = new FormData();
+            var imageFile = document.getElementById("file").files[0];
+            formData.append("file", imageFile);
+            $.ajax({
+                url: "/Admin/Product/Upload",
+                type: "POST",
+                data: formData,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false
+            }).success(function (data) {
+                if (data.Code == 1) {
+                    $('#Image').val(data.data);
+                    $('#ImagePro').attr("src", data.data)
+                    $('#ImagePro').css("display", "block");
+                }
+                if (data.Code == 4) {
+                    showError('Lỗi', data.message);
+                }
+            });
+        }
+        function saveSlide() {
+            var fd = new FormData(document.getElementById("SlideForm"));
+
+            $.ajax({
+                url: "@Url.Content("/Admin/Slide/AddEditSlide")",
+                type: "POST",
+                data: fd,
+                enctype: 'multipart/form-data',
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,   // tell jQuery not to set contentType
+                success: function (data) {
+                    if (data.Code == 1) {
+                        showSuccess(data.message);
+                        $('#ModalSlide').modal('hide');
+                        LoadTable();
+                    }
+                    else {
+                        showError('Lỗi', data.message);
+                    }
+
+                }
+            });
+
+        }
+    </script>
+}

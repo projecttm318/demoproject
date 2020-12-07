@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<div id="container">
+
+</div>
+<script>
+    $(document).ready(function(){
+        createChart();
+    })
+    function createChart() {
+        $.ajax({
+            type: "POST",
+            url: "/Test/GetList",
+            success: function (data) {
+                debugger;
+                getChart(data);
+            }
+        });
+    }
+    function getChart(data) {
+        Highcharts.chart('container', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Browser market shares in January, 2018'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: data
+        });
+    }
+
+</script>

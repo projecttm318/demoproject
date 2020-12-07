@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Đặt Hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //NongSan.Models.DAO.ProductDAO dao = new NongSan.Models.DAO.ProductDAO();
+    //var lstParent = dao.GetCateParent();
+    //var pro = ViewData["Product"] as NongSan.Models.Product;
+}
+
+<section id="chir_article">
+    <section id="article_edu" class="latest_news_area section-padding">
+        <div class="main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 col-sm-8 col-xs-12">
+                        <div class="insCtMain">
+                            <div class="main_article bg_w">
+
+                                <div class="body-content" style="display:inline-block;width:100%">
+                                    <h1 style="text-align: center;">ĐẶT HÀNG ONLINE</h1>
+                                    <p style="text-align: center; margin-bottom: 35px;">
+                                        Chúng tôi sẽ liên hệ với bạn ngay sau khi nhận được thông tin đặt hàng. Vui lòng điền đẩy đủ thông tin dưới đây
+                                    </p>
+
+                                    <form method="POST" action="/Order/SaveOrder" accept-charset="UTF-8" class="form-horizontal">
+                                        <input name="productId" type="hidden" value="@pro.Id">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Tên sản phẩm</label>
+                                            <div class="col-md-6">
+                                                <p style="margin-top: 6px; text-transform: uppercase;"><strong>@pro.ProductName</strong></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Tên khách hàng <span style="color: red;">*</span></label>
+                                            <div class="col-md-6">
+                                                <input type="text" name="FullName" class="form-control col-md-6" required="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Số điện thoại người nhận <span style="color: red;">*</span></label>
+                                            <div class="col-md-6">
+                                                <p class="help-block">(Chú ý: Quý khách kiểm tra lại chính xác số điện thoại trước khi gửi)</p>
+                                                <input type="text" name="PhoneNumber" class="form-control" required="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Địa chỉ giao hàng <span style="color: red;">*</span></label>
+                                            <div class="col-md-6">
+                                                <p class="help-block">(Bao gồm số nhà, tên đường/thôn/xóm, quận/huyện, thành phố)</p>
+                                                <input type="text" name="Address" class="form-control" required="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Số lượng <span style="color: red;">*</span></label>
+                                            <div class="col-md-6">
+                                                <input type="number" name="quantity" class="form-control" value="1" min="1" required="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Lưu ý khác (nếu có)</label>
+                                            <div class="col-md-6">
+                                                <textarea name="Note" class="form-control" style="resize:none" maxlength="512"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label"></label>
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-success btn-sm" style="text-transform: uppercase; font-weight: bold; font-size: 20px;"><i class="glyphicon glyphicon-shopping-cart"></i> Đặt hàng</button>
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 hidden-xs ba_sidebar">
+                        <aside>
+                            <div class="right_sidebar">
+                                <div class="all_right_widgets">
+
+                                    <div class="sing_right_widget">
+                                        <h2>Danh mục sản phẩm</h2>
+                                        <div class="sing_right_widg_content">
+                                            <ul class="category_right">
+                                                @foreach (var item in lstParent)
+                                                {
+                                                    <li class=""><a href="/@item.Slug-@item.Id"><i class="fa fa-angle-right"></i>@item.CategoryName</a></li>
+                                                }
+
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</section>
+

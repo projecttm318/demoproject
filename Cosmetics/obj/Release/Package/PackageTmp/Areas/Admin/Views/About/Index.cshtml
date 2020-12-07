@@ -1,0 +1,75 @@
+﻿@model List<NongSan.Models.About>
+@{
+    ViewBag.Title = "Giới Thiệu";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Giới Thiệu</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                               
+                                <th>Title</th>
+                                <th class="no-sort">@*<button type="button" class="btn btn-success btn-xs" onclick="addAbout()" style="text-align:center;width:100%"><i class="fa fa-plus" style="color:white" aria-hidden="true"></i></button>*@</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                  
+                                    <td>@item.Title</td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-xs" onclick="editAbout(@item.Id)"><i class="fa fa-database" style="color:white" aria-hidden="true"></i></button>
+
+                                    </td>
+                                </tr>
+
+                            }
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+@section scripts
+{
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "columnDefs": [{
+                    "targets": 'no-sort',
+                    "orderable": false,
+                    "searching": false,
+                }]
+            });
+        });
+        function addAbout() {
+            window.location = "/Admin/About/AddEditAbout";
+        }
+        function editAbout(id) {
+            window.location = "/Admin/About/AddEditAbout?id=" + id;
+        }
+    </script>
+}
+

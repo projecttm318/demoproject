@@ -1,0 +1,346 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Cấu Hình Website</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="tbSetting" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Logo</th>
+                                <th>Email</th>
+                                <th>Số Điện Thoại</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+
+</section>
+
+<div id="myModalSetting" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+
+            <div class="modal-body">
+                <form id="settingForm">
+                    <input type="hidden" name="ID" id="ID" />
+                    <input type="hidden" name="mode" id="mode" />
+
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Cấu Hình Thông Tin</a></li>
+                            <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Cấu Hình Hình Ảnh</a></li>
+
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                <div class="col-md-6" style="padding-left:0px">
+                                    <div class="form-group">
+                                        <label for="Name">Số Điện Thoại</label>
+                                        <input type="text" class="form-control" required id="PhoneNumber" name="PhoneNumber" placeholder="Số Điện Thọai" tabindex="1">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6" style="padding-right:0px">
+
+                                    <div class="form-group">
+                                        <label for="Name">Địa Chỉ</label>
+                                        <input type="text" class="form-control" required id="Address" name="Address" placeholder="Địa Chỉ" tabindex="1">
+                                    </div>
+                                </div>
+ 
+
+                                <div class="clearfix"></div>
+                                <div class="form-group">
+                                    <label for="Name">Email</label>
+                                    <input type="text" class="form-control" id="Email" name="Email" placeholder="Email" tabindex="1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Name">Link Facebook</label>
+                                    <input type="text" class="form-control" id="Sologan" name="Sologan" placeholder="Link FaceBook" tabindex="1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Name">Meta Title</label>
+                                    <textarea rows="4" style="resize: none;" class="form-control" name="MetaTitle" id="MetaTitle" placeholder="MetaTitle" tabindex="2"></textarea>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="Name">Meta Keyword</label>
+                                    <textarea rows="4" style="resize: none;" class="form-control" name="MetaKeyWord" id="MetaKeyWord" placeholder="MetaKeyWord" tabindex="2"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Name">Meta Description</label>
+                                    <textarea rows="4" style="resize: none;" class="form-control" name="MetaDescription" id="MetaDescription" placeholder="MetaDescription" tabindex="2"></textarea>
+
+
+                                </div>
+                               
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane " id="tab_2">
+                                <div class="form-group">
+                                    <label for="Name">Logo</label>
+                                    <div class="fileupload-item">
+                                        <input type="file" style="display:none" name="fileUpload" id="file" onchange="uploadFileDetail('file', 'imageDisplay1', 'Logo')" />
+                                        <img id="imageDisplay1" />
+                                        <label type="button" class="btn bg-green-custom pull-right btn-sm btn-flat" for="file">
+                                            <i class="fa fa-camera" aria-hidden="true"></i> Ảnh
+                                        </label>
+                                        <input type="hidden" name="Logo" id="Logo" />
+                                    </div><hr style="margin-top:36px" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="Name">Favicon</label>
+                                    <div class="fileupload-item">
+                                        <input type="file" style="display:none" name="fileUpload" id="file2" onchange="uploadFileDetail('file2', 'imageDisplay2', 'Favicon')" />
+                                        <img id="imageDisplay2" style="height:50px" />
+                                        <label type="button" class="btn bg-green-custom pull-right btn-sm btn-flat" for="file2">
+                                            <i class="fa fa-camera" aria-hidden="true"></i> Ảnh
+                                        </label>
+                                        <input type="hidden" name="Favicon" id="Favicon" />
+                                    </div><hr style="margin-top:36px" />
+                                </div>
+                              
+                              
+                               
+                                <div class="form-group">
+                                    <label for="Name">Hình nền trái</label>
+                                    <div class="fileupload-item">
+                                        <input type="file" style="display:none" name="fileUpload" id="file4" onchange="uploadFileDetail('file4', 'imageDisplay4', 'ImageBgNew')" />
+                                        <img id="imageDisplay4" style="height:50px" />
+                                        <label type="button" class="btn bg-green-custom pull-right btn-sm btn-flat" for="file4">
+                                            <i class="fa fa-camera" aria-hidden="true"></i> Ảnh
+                                        </label>
+                                        <input type="hidden" name="ImageBgNew" id="ImageBgNew" />
+                                    </div><hr style="margin-top:36px" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="Name">Hình nền phải</label>
+                                    <div class="fileupload-item">
+                                        <input type="file" style="display:none" name="fileUpload" id="file5" onchange="uploadFileDetail('file5', 'imageDisplay5', 'ImageBgCommnet')" />
+                                        <img id="imageDisplay5" style="height:50px" />
+                                        <label type="button" class="btn bg-green-custom pull-right btn-sm btn-flat" for="file5">
+                                            <i class="fa fa-camera" aria-hidden="true"></i> Ảnh
+                                        </label>
+                                        <input type="hidden" name="ImageBgCommnet" id="ImageBgCommnet" />
+                                    </div><hr style="margin-top:36px" />
+                                </div>
+
+
+                            </div>
+                            <!-- /.tab-pane -->
+
+                        </div>
+
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" tabindex="3" onclick="savePageInfo()">Lưu</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            LoadTable();
+            $('#btnSelectImage').on('click', function (e) {
+                e.preventDefault();
+                var finder = new CKFinder();
+                finder.selectActionFunction = function (url) {
+                    $('#Logo').val(url);
+                };
+                finder.popup();
+            })
+
+        });
+
+        function LoadTable() {
+            $.ajax({
+                type: "POST",
+                url: '/Admin/PageInfo/GetListSetting',
+                success: function (data) {
+                    $('#tbSetting').DataTable({
+                        data: data,
+                        destroy: true,
+                        columns: [
+                            {
+                                "data": "Logo",
+                                'render': function (data, type, full, meta) {
+                                    var html = '<img src="' + full.Logo + '" style="width:50px;width:50px"/>';
+                                    return html;
+                                }
+                            },
+                            { "data": "Email" },
+                            { "data": "PhoneNumber" },
+                            {
+                                targets: 'no-sort',
+                                orderable: false,
+                                'class': 'text-center',
+                                'width': '10%',
+                                'render': function (data, type, full, meta) {
+                                    var html = ' <button type="button" data-toggle="modal" data-target="#myModalSetting" class="btn btn-primary btn-xs" title="Cập Nhật"  onclick="UpdateSetting(this,' + full.ID + ')"><i class="fa  fa-database"></i></button> ';
+                                    return html;
+                                }
+                            }
+                        ],
+
+                    });
+                }
+            });
+
+        }
+
+        function UpdateSetting(thiz, id) {
+            if (id == null) {
+                $('.modal-title').html('Thêm Cấu Hình Website');
+                $('#mode').val('ADD');
+            } else {
+                var table = $('#tbSetting').DataTable();
+                var data = table.row($(thiz).parent().parent()).data();
+                $('.modal-title').html('Cập nhật Danh Mục Sản Phẩm');
+                $('#mode').val('UPDATE');
+                $('#ID').val(data.ID);
+                $('#PhoneNumber').val(data.PhoneNumber);
+                $('#Address').val(data.Address);
+                $('#MetaDescription').val(data.MetaDescription);
+                $('#MetaKeyWord').val(data.MetaKeyWord);
+                $('#MetaTitle').val(data.MetaTitle);
+                $('#Logo').val(data.Logo);
+                $('#Sologan').val(data.Sologan);
+                $('#Favicon').val(data.Favicon);
+                $('#imageDisplay1').attr("src", data.Logo);
+                $('#imageDisplay2').attr("src", data.Favicon);
+                $('#imageDisplay3').attr("src", data.ImageBgProduct);
+                $('#imageDisplay4').attr("src", data.ImageBgNew);
+                 $('#imageDisplay5').attr("src", data.ImageBgCommnet);
+                $('#ImageBgProduct').val(data.ImageBgProduct);
+                  $('#ImageBgNew').val(data.ImageBgNew);
+                $('#Email').val(data.Email);
+                $('#Meta1').val(data.Meta1);
+                $('#PixelFacebook').val(data.PixelFacebook);
+                $('#DesciptionTop').val(data.DesciptionTop);
+                $('#DescriptionProduct').val(data.DescriptionProduct);
+                $('#DescriptionNew').val(data.DescriptionNew);
+                $('#ImageBgCommnet').val(data.ImageBgCommnet);
+            }
+        }
+        function Remove(thiz, id) {
+            (new PNotify({
+                title: 'Xác nhận',
+                text: 'Bạn muốn xóa Danh mục ?',
+                icon: 'glyphicon glyphicon-question-sign',
+                styling: 'bootstrap3',
+                hide: false,
+                confirm: {
+                    confirm: true
+                },
+                buttons: {
+                    closer: false,
+                    sticker: false
+                },
+                history: {
+                    history: false
+                }
+            })).get().on('pnotify.confirm', function () {
+                $.ajax({
+                    type: "POST",
+                    url: '/Admin/Category/Delete',
+                    data: { id: id },
+                    success: function (data) {
+                        if (data.Code === 1) {
+                            $('#tbCategory').DataTable().row($(thiz).parents('tr')).remove().draw();
+                            showSuccess(data.message);
+                        } else {
+                            showError(data.message);
+                        }
+
+                    }
+                });
+            }).on('pnotify.cancel', function () {
+            });
+        }
+
+        function savePageInfo() {
+             var fd = new FormData(document.getElementById("settingForm"));
+            $.ajax({
+                url: "@Url.Content("/Admin/PageInfo/Update")",
+                type: "POST",
+                data: fd,
+                enctype: 'multipart/form-data',
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,   // tell jQuery not to set contentType.
+                beforeSend: function () {
+                    $('#btnLoading').css("display", "block");
+                     $('#btnSave').css("display", "none");
+                 },
+                success: function (data) {
+                   if (data.Code == 1) {
+                        $('#myModalSetting').modal('hide');
+                        showSuccess(data.message);
+                        LoadTable();
+                    }
+                    else {
+                        showError(data.message);
+                    }
+
+                }
+            });
+        }
+
+        function uploadFileDetail(fileInput, inputDisplay, inputValue) {
+            var formData = new FormData();
+            var imageFile = document.getElementById(fileInput).files[0];
+            formData.append("file", imageFile);
+            $.ajax({
+                url: "/Admin/Product/Upload",
+                type: "POST",
+                data: formData,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false
+            }).success(function (data) {
+                if (data.Code == 1) {
+                    $('#' + inputValue).val(data.data);
+                    $('#' + inputDisplay).attr("src", data.data);
+                    $("#" + inputDisplay).css('display', 'block');
+                }
+                if (data.Code == 4) {
+                    showError('Lỗi', data.message);
+                }
+            });
+        }
+    </script>
+}
+

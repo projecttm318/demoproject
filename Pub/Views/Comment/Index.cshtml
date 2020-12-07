@@ -1,0 +1,98 @@
+﻿@model List<NongSan.Models.Comment>
+@{
+    Layout = null;
+    var pageInfo = ViewBag.PageInfo as NongSan.Models.Setting;
+}
+<style>
+    .testimonial {
+        text-align: center;
+    }
+
+    .testimonial-name {
+        display: inline-block;
+        position: relative;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 0 15px;
+    }
+
+        .testimonial-name:before {
+            position: absolute;
+            content: '';
+            width: 98px;
+            height: 1px;
+            background: #a0a0a3;
+            top: 50%;
+            right: 100%;
+        }
+
+        .testimonial-name:after {
+            position: absolute;
+            content: '';
+            width: 98px;
+            height: 1px;
+            background: #a0a0a3;
+            top: 50%;
+            left: 100%;
+        }
+
+
+    .testimonial .content:before {
+        position: absolute;
+        content: '';
+        background: url('/images/icons.png') no-repeat -79px -10px;
+        width: 35px;
+        height: 27px;
+        left: 25px;
+        top: 10px;
+    }
+
+    .testimonial .content:after {
+        position: absolute;
+        content: '';
+        background: url(/images/icons.png) no-repeat -123px -7px;
+        width: 60px;
+        height: 55px;
+        right: 50px;
+        margin-top: -60px;
+    }
+
+    .section_danhgia {
+    width: 100%;
+    float: left;
+    padding: 100px 0px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+</style>
+<section class="awe-section-7">
+    <section class="section_danhgia" style="background-image:url(@pageInfo.ImageBgCommnet)">
+        <div class="container">
+            <div class="rows">
+                <div id="testimonial-slider" class="owl-carousel" data-height='true' data-play='true' data-nav='false' data-dot='false' data-lg-items='1' data-md-items='1' data-sm-items='1' data-xs-items='1'>
+                    @foreach (var item in Model)
+                    {
+                        <div class="testimonial">
+                            <div class="content">
+                                <p class="description">
+                                    @item.Content
+                                </p>
+                                <div class="testimonial-author" style="margin-top:20px">
+                                    <span class="testimonial-name">@item.Name.ToUpper()</span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

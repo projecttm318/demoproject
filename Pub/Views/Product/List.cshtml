@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var lst = ViewData["lst"] as List<NongSan.Models.Product>;
+    var lstCate = ViewData["lstCate"] as List<NongSan.Models.Category>;
+
+}
+<div id="breadcrumb">
+    <div class="container">
+        <h2 class="title">About Us</h2>
+
+        <ul class="breadcrumb">
+            <li><a href="#" title="Home">Home</a></li>
+            <li><span>About Us</span></li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <!-- Sidebar -->
+        <div id="left-column" class="sidebar col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <!-- Block - Product Categories -->
+            <div class="block product-categories">
+                <h3 class="block-title">Categories</h3>
+
+                <div class="block-content">
+                    @foreach (var item in lstCate)
+                    {
+                        <div class="item">
+                            <a class="category-title" href="/@item.Slug-@item.Id">@item.CategoryName</a>
+                        </div>
+                    }
+
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <!-- Page Content -->
+        <div id="center-column" class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <div class="product-category-page">
+
+                <div class="tab-content">
+                    <!-- Products Grid -->
+                    <div class="tab-pane active" id="products-grid">
+                        <div class="products-block">
+                            <div class="row">
+                                @foreach (var item in lst)
+                                {
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <div class="product-item">
+                                            <div class="product-image">
+                                                <a href="product-detail-left-sidebar.html">
+                                                    <img class="img-responsive" src="@item.Image" alt="Product Image">
+                                                </a>
+                                            </div>
+
+                                            <div class="product-title">
+                                                <a href="/san-pham/@item.Slug-@item.Id">
+                                                    @item.ProductName
+                                                </a>
+                                            </div>
+
+                                            <div class="product-rating">
+                                                <div class="star on"></div>
+                                                <div class="star on"></div>
+                                                <div class="star on "></div>
+                                                <div class="star on"></div>
+                                                <div class="star"></div>
+                                            </div>
+
+                                            <div class="product-price">
+                                                <span class="sale-price">@item.Price.ToString("#,##0")</span>
+
+                                            </div>
+
+                                            <div class="product-buttons">
+                                                <a class="add-to-cart" href="#">
+                                                    <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                                                </a>
+
+                                                <a class="add-wishlist" href="#">
+                                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                                </a>
+
+                                                <a class="quickview" href="#">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                </a>  <a class="quickview" href="#">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿@model NongSan.Models.About
+@{
+    Layout = null;
+}
+
+<section class="awe-section-3">
+    <div class="section_about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-xs-12">
+
+                    <div class="title_brand heading">
+                        <h2 title="Về chúng tôi">
+                            <span class="text_gradient">@Model.Title</span>
+                        </h2>
+
+                        <p>
+                             @Html.Raw(Model.Content)
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

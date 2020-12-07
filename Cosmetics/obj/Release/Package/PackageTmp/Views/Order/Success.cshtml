@@ -1,0 +1,54 @@
+﻿@model NongSan.Models.Order
+@{
+    ViewBag.Title = "Đặt Hàng Thành Công";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    NongSan.Models.NongSanEntities db = new NongSan.Models.NongSanEntities();
+    var detail = new List<NongSan.Models.OrderDetail>();
+    if (Model != null)
+    {
+        detail = db.OrderDetails.Where(x => x.OrderID == Model.ID).ToList();
+    }
+
+
+}
+<div id="breadcrumb">
+    <div class="container">
+        <h2 class="title">
+            ORDER SUCCESS
+        </h2>
+
+        <ul class="breadcrumb">
+            <li><a href="#" title="Home">Home</a></li>
+      
+            <li><span>Order Success</span></li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="row" style="text-align:center;margin-bottom:20px">
+        <div class="col-md-12" style="margin-bottom:10px">
+            <h1 style="font-size:50px;color:#847c7c">THANK YOU</h1>
+
+            <p>ORDER SUCCESS. WE WILL CONTACT YOU IN THE FIRST TIME! THANK YOU</p>
+
+        </div>
+      
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <button class="btn btn-flat btn-cart-success" title="Tiếp tục mua hàng" type="button" onclick="window.location.href='/'"><span><span>Tiếp tục mua hàng</span></span></button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-left-cus {
+        padding-top: 7px;
+        text-align: left;
+    }
+
+    .btn-cart-success {
+        background: -webkit-linear-gradient(35deg, #c1c7b1 0%, #f6dbd4 100%);
+        color: #fff;
+        margin-top: 10px;
+    }
+</style>

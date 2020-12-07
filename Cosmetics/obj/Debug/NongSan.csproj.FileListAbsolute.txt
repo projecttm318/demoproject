@@ -1,0 +1,266 @@
+D:\Web\THUONG\SVSG\Cosmetics\bin\ApplicationInsights.config
+D:\Web\THUONG\SVSG\Cosmetics\bin\roslyn\csc.exe
+D:\Web\THUONG\SVSG\Cosmetics\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Web\THUONG\SVSG\Cosmetics\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Web\THUONG\SVSG\Cosmetics\bin\roslyn\System.Collections.Immutable.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\roslyn\System.Reflection.Metadata.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\roslyn\vbc.exe
+D:\Web\THUONG\SVSG\Cosmetics\bin\roslyn\VBCSCompiler.exe
+D:\Web\THUONG\SVSG\Cosmetics\bin\roslyn\VBCSCompiler.exe.config
+D:\Web\THUONG\SVSG\Cosmetics\bin\NongSan.dll.config
+D:\Web\THUONG\SVSG\Cosmetics\bin\NongSan.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\NongSan.pdb
+D:\Web\THUONG\SVSG\Cosmetics\bin\Antlr3.Runtime.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\CKFinder.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\EntityFramework.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\EntityFramework.SqlServer.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\EPPlus.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.AI.DependencyCollector.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.AI.Web.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.AI.WindowsServer.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.ApplicationInsights.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.Web.Infrastructure.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\Newtonsoft.Json.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\PagedList.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\PagedList.Mvc.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\System.Web.Helpers.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\System.Web.Mvc.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\System.Web.Optimization.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\System.Web.Razor.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\System.Web.WebPages.Deployment.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\System.Web.WebPages.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\System.Web.WebPages.Razor.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\WebGrease.dll
+D:\Web\THUONG\SVSG\Cosmetics\bin\CKFinder.pdb
+D:\Web\THUONG\SVSG\Cosmetics\bin\EntityFramework.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\EntityFramework.SqlServer.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\EPPlus.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.AI.DependencyCollector.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.AI.Web.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.AI.WindowsServer.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.ApplicationInsights.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\PagedList.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\PagedList.Mvc.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\System.Web.Helpers.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\System.Web.Mvc.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\System.Web.Optimization.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\System.Web.Razor.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\System.Web.WebPages.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\System.Web.WebPages.Deployment.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\System.Web.WebPages.Razor.xml
+D:\Web\THUONG\SVSG\Cosmetics\bin\Antlr3.Runtime.pdb
+D:\Web\THUONG\SVSG\Cosmetics\bin\Newtonsoft.Json.xml
+D:\Web\THUONG\SVSG\Cosmetics\obj\Debug\NongSan.csproj.CoreCompileInputs.cache
+D:\Web\THUONG\SVSG\Cosmetics\obj\Debug\NongSan.csproj.CopyComplete
+D:\Web\THUONG\SVSG\Cosmetics\obj\Debug\NongSan.dll
+D:\Web\THUONG\SVSG\Cosmetics\obj\Debug\NongSan.pdb
+D:\Web\THUONG\SVSG\Cosmetics\obj\Debug\NongSan.csprojAssemblyReference.cache
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\ApplicationInsights.config
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\roslyn\csc.exe
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\roslyn\System.Collections.Immutable.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\roslyn\System.Reflection.Metadata.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\roslyn\vbc.exe
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\roslyn\VBCSCompiler.exe
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\roslyn\VBCSCompiler.exe.config
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\NongSan.dll.config
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\NongSan.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\NongSan.pdb
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Antlr3.Runtime.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\CKFinder.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\EntityFramework.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\EntityFramework.SqlServer.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\EPPlus.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.AI.DependencyCollector.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.AI.Web.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.AI.WindowsServer.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.ApplicationInsights.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.Web.Infrastructure.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Newtonsoft.Json.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\PagedList.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\PagedList.Mvc.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\System.Web.Helpers.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\System.Web.Mvc.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\System.Web.Optimization.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\System.Web.Razor.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\System.Web.WebPages.Deployment.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\System.Web.WebPages.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\System.Web.WebPages.Razor.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\WebGrease.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\CKFinder.pdb
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\EntityFramework.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\EntityFramework.SqlServer.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\EPPlus.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.AI.DependencyCollector.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.AI.Web.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.AI.WindowsServer.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.ApplicationInsights.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\PagedList.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\PagedList.Mvc.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\System.Web.Helpers.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\System.Web.Mvc.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\System.Web.Optimization.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\System.Web.Razor.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\System.Web.WebPages.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\System.Web.WebPages.Deployment.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\System.Web.WebPages.Razor.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Antlr3.Runtime.pdb
+D:\Web\THUONG\SVSG - Copy\Cosmetics\bin\Newtonsoft.Json.xml
+D:\Web\THUONG\SVSG - Copy\Cosmetics\obj\Debug\NongSan.csproj.CoreCompileInputs.cache
+D:\Web\THUONG\SVSG - Copy\Cosmetics\obj\Debug\NongSan.csproj.CopyComplete
+D:\Web\THUONG\SVSG - Copy\Cosmetics\obj\Debug\NongSan.dll
+D:\Web\THUONG\SVSG - Copy\Cosmetics\obj\Debug\NongSan.pdb
+D:\Web\THUONG\NongSan\Cosmetics\bin\ApplicationInsights.config
+D:\Web\THUONG\NongSan\Cosmetics\bin\roslyn\csc.exe
+D:\Web\THUONG\NongSan\Cosmetics\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Web\THUONG\NongSan\Cosmetics\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Web\THUONG\NongSan\Cosmetics\bin\roslyn\System.Collections.Immutable.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\roslyn\System.Reflection.Metadata.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\roslyn\vbc.exe
+D:\Web\THUONG\NongSan\Cosmetics\bin\roslyn\VBCSCompiler.exe
+D:\Web\THUONG\NongSan\Cosmetics\bin\roslyn\VBCSCompiler.exe.config
+D:\Web\THUONG\NongSan\Cosmetics\bin\NongSan.dll.config
+D:\Web\THUONG\NongSan\Cosmetics\bin\NongSan.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\NongSan.pdb
+D:\Web\THUONG\NongSan\Cosmetics\bin\Antlr3.Runtime.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\CKFinder.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\EntityFramework.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\EntityFramework.SqlServer.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\EPPlus.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.AI.DependencyCollector.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.AI.Web.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.AI.WindowsServer.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.ApplicationInsights.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.Web.Infrastructure.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\Newtonsoft.Json.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\PagedList.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\PagedList.Mvc.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\System.Web.Helpers.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\System.Web.Mvc.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\System.Web.Optimization.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\System.Web.Razor.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\System.Web.WebPages.Deployment.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\System.Web.WebPages.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\System.Web.WebPages.Razor.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\WebGrease.dll
+D:\Web\THUONG\NongSan\Cosmetics\bin\CKFinder.pdb
+D:\Web\THUONG\NongSan\Cosmetics\bin\EntityFramework.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\EntityFramework.SqlServer.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\EPPlus.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.AI.DependencyCollector.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.AI.Web.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.AI.WindowsServer.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.ApplicationInsights.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\PagedList.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\PagedList.Mvc.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\System.Web.Helpers.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\System.Web.Mvc.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\System.Web.Optimization.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\System.Web.Razor.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\System.Web.WebPages.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\System.Web.WebPages.Deployment.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\System.Web.WebPages.Razor.xml
+D:\Web\THUONG\NongSan\Cosmetics\bin\Antlr3.Runtime.pdb
+D:\Web\THUONG\NongSan\Cosmetics\bin\Newtonsoft.Json.xml
+D:\Web\THUONG\NongSan\Cosmetics\obj\Debug\NongSan.csproj.CoreCompileInputs.cache
+D:\Web\THUONG\NongSan\Cosmetics\obj\Debug\NongSan.csproj.CopyComplete
+D:\Web\THUONG\NongSan\Cosmetics\obj\Debug\NongSan.dll
+D:\Web\THUONG\NongSan\Cosmetics\obj\Debug\NongSan.pdb
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\ApplicationInsights.config
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\roslyn\csc.exe
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\roslyn\vbc.exe
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\roslyn\VBCSCompiler.exe
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\NongSan.dll.config
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\NongSan.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\NongSan.pdb
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Antlr3.Runtime.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\CKFinder.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\EntityFramework.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\EntityFramework.SqlServer.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\EPPlus.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.AI.Web.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Newtonsoft.Json.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\PagedList.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\PagedList.Mvc.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\System.Web.Helpers.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\System.Web.Mvc.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\System.Web.Optimization.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\System.Web.Razor.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\System.Web.WebPages.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\System.Web.WebPages.Razor.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\WebGrease.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\CKFinder.pdb
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\EntityFramework.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\EntityFramework.SqlServer.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\EPPlus.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.AI.Web.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\PagedList.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\PagedList.Mvc.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\System.Web.Helpers.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\System.Web.Mvc.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\System.Web.Optimization.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\System.Web.Razor.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\System.Web.WebPages.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\System.Web.WebPages.Razor.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Antlr3.Runtime.pdb
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\bin\Newtonsoft.Json.xml
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\obj\Debug\NongSan.csprojAssemblyReference.cache
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\obj\Debug\NongSan.csproj.CoreCompileInputs.cache
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\obj\Debug\NongSan.csproj.CopyComplete
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\obj\Debug\NongSan.dll
+C:\Users\Tuan Minh\Desktop\SVSG\NongSan\Cosmetics\obj\Debug\NongSan.pdb

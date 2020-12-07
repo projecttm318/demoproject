@@ -1,0 +1,141 @@
+﻿
+@{
+    NongSan.Models.NongSanEntities db = new NongSan.Models.NongSanEntities();
+   
+}
+
+
+
+
+<!-- Main Content -->
+    <div id="content" class="site-content">
+        <!-- Slideshow -->
+        @Html.Action("Index", "Slide")
+
+
+        <!-- Banners -->
+
+        @Html.Partial("/Views/Slide/Banner.cshtml")
+
+        <!-- 2 Columns -->
+        <div class="two-columns">
+            <div class="container">
+                <div class="row ">
+                    <!-- Left Column -->
+                    <div class="col-20p col-md-3 left-column">
+                        <!-- Product - Category -->
+
+                        @Html.Action("Index", "Category")
+
+
+
+
+                        <!-- Payment Intro -->
+                        <div class="section payment-intro">
+                            <div class="block-content">
+                                <div class="item">
+                                    <img class="img-responsive" src="/Images/home2-payment-1.png " alt="Payment Intro">
+                                    <h3 class="title">Free Shipping item</h3>
+                                    <div class="content">Proin gravida nibh vel velit auctor aliquet aenean</div>
+                                </div>
+                                <div class="item">
+                                    <img class="img-responsive" src="/Images/home2-payment-2.png " alt="Payment Intro">
+                                    <h3 class="title">Secured Payment</h3>
+                                    <div class="content">Proin gravida nibh vel velit auctor aliquet aenean</div>
+                                </div>
+                                <div class="item">
+                                    <img class="img-responsive" src="/Images/home2-payment-3.png " alt="Payment Intro">
+                                    <h3 class="title">money back guarantee</h3>
+                                    <div class="content">Proin gravida nibh vel velit auctor aliquet aenean</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+                    <!-- Right Column -->
+                    <div class="col-80p col-md-9 right-column">
+                        <!-- Product - Category Tab -->
+                        @Html.Action("Index", "Product")
+
+                        <!-- Banners -->
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Intro -->
+        <div class="section intro">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="intro-header">
+                            <img src="/Images/leaf.png" alt="Partner 1">
+                            <h3>Why Choose Us</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="intro-left">
+                            <div class="intro-item">
+                                <p><img src="/Images/intro-icon-1.png" alt="Intro Image"></p>
+                                <h4>Always Fresh</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+
+                            <div class="intro-item">
+                                <p><img src="/Images/intro-icon-2.png" alt="Intro Image"></p>
+                                <h4>Super Healthy</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="effect">
+                            <a href="#">
+                                <img class="intro-image img-responsive" src="/Images/intro-2.png" alt="Intro Image">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="intro-right">
+                            <div class="intro-item">
+                                <p><img src="/Images/intro-icon-3.png" alt="Intro Image"></p>
+                                <h4>100% Natural</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+
+                            <div class="intro-item">
+                                <p><img src="/Images/intro-icon-4.png" alt="Intro Image"></p>
+                                <h4>Premium Quality</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+

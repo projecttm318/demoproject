@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="breadcrumb">
+    <div class="container">
+        <h2 class="title">Login</h2>
+
+        <ul class="breadcrumb">
+            <li><a href="#" title="Home">Home</a></li>
+            <li><span>Login</span></li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="login-page">
+        <div class="login-form form">
+            <div class="block-title">
+                <h2 class="title"><span>Login</span></h2>
+            </div>
+
+            <form id="frmLogin">
+                <div class="form-group">
+                    <label>UserName</label>
+                    <input type="text" class="form-control" id="UserName" name="UserName">
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="PassWord" id="Password">
+                </div>
+                <div class="form-group text-center">
+                    <div class="link">
+                      
+                        <a href="/Customer/Register">Register?</a>
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <input type="button" onclick="fnLogin()" class="btn btn-primary" value="Sign In">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+     function validateContact() {
+
+    var check = true;
+
+        
+
+        if ($('#UserName').val() == "") {
+            toastr.error('Please enter your Username');
+              check = false
+        }
+
+        if ($('#Password').val() == "") {
+            toastr.error('Please enter your Password');
+              check = false
+        }
+          
+
+
+    return check;
+    }
+
+
+    function fnLogin() {
+        var check = validateContact();
+        if (check) {
+             var fd = new FormData(document.getElementById("frmLogin"));
+            $.ajax({
+                url: "@Url.Content("/Customer/FnLogin")",
+                type: "POST",
+                data: fd,
+                enctype: 'multipart/form-data',
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,   // tell jQuery not to set contentType.
+                success: function (data) {
+                    if (data.Code == -1) {
+
+                        toastr.error('Username does not exist in the system')
+                    }
+                    else if (data.Code ==-2) {
+                        toastr.error('Incorrect password');
+                    }
+                    else {
+                        window.location = data.url;
+                    }
+
+        }
+     });
+    }
+   }
+</script>

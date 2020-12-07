@@ -1,0 +1,22 @@
+﻿@model List<NongSan.Models.Category>
+@{
+
+    Layout = null;
+    var page = ViewBag.PageInfo as NongSan.Models.Setting;
+
+}
+<div class="section product-categories">
+    <div class="block-title">
+        <h2 class="title">Categories</h2>
+    </div>
+
+    <div class="block-content">
+        @foreach (var item in Model)
+        {
+            <div class="item">
+                <a class="category-title" href="/@item.Slug-@item.Id">@item.CategoryName</a>
+            </div>
+        }
+         
+    </div>
+</div>

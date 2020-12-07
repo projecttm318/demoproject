@@ -1,0 +1,106 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<NongSan.Models.New>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.Title = "Nhật ký sống xanh";
+
+}
+<div class="breadcrumb_background margin-bottom-40">
+    <div class="title_full">
+        <div class="container a-center">
+            <p class="title_page">Nhật ký sống xanh</p>
+        </div>
+    </div>
+    <section class="bread-crumb">
+        <span class="crumb-border"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 a-center">
+                    <ul class="breadcrumb">
+                        <li class="home">
+                            <a href="/"><span>Trang chủ</span></a>
+                            <span class="mr_lr">&nbsp;<i class="fa fa-angle-right"></i>&nbsp;</span>
+                        </li>
+
+                        <li>
+                            <a href="/tin-tuc"><span>Nhật ký sống xanh</span></a>
+                            <span class="mr_lr">&nbsp;<i class="fa fa-angle-right"></i>&nbsp;</span>
+                        </li>
+                       
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+            <div class="title_brand heading">
+               
+                <p>
+                
+                </p>
+            </div>
+ 
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="content_all f-left w_100">
+            <div class="right-content margin-bottom-fix margin-bottom-50-article col-md-12 col-sm-12 col-xs-12">
+                <div class="box-heading relative">
+
+                     
+                </div>
+
+                <div class="list-blogs blog-main row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="blog_index">
+                                <div class="myblog">
+                                    <div class="image-blog-left a-center">
+
+                                        <a class="image-blog" href="/tin-tuc/@item.Slug-@item.Id" title="@item.Title">
+                                            <img class="lazyload loaded" src="@item.Thumbnail" data-src="@item.Thumbnail" alt="@item.Title" data-was-processed="true">
+                                        </a>
+
+                                        <div class="date_blog">
+                                            <i class="fa fa-calendar"></i><b class="color_main"> @item.DatePost.Value.ToString("dd/MM/yyyy")</b>
+                                            &nbsp; Đăng bởi: <b class="color_main">Administrator</b>
+                                        </div>
+                                    </div>
+                                    <div class="content_blog">
+                                        <div class="content_right">
+                                            <h3>
+                                                <a href="/tin-tuc/@item.Slug-@item.Id" title="@item.Title">@item.Title</a>
+                                            </h3>
+                                        </div>
+                                        <div class="summary_item_blog">
+                                            <p> @item.ShortDescription...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-right">
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

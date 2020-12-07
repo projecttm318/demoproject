@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+    var od = ViewData["od"] as NongSan.Models.Order;
+}
+<div class="modal fade" id="ModalStatus" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Cập nhật trạng thái</h4>
+            </div>
+            <form id="CateForm">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        
+                        <label for="NoiDung">Danh Mục</label>
+                        @{
+                            NongSan.Areas.Admin.DAO.CategoryDAO dao = new NongSan.Areas.Admin.DAO.CategoryDAO();
+                            var lst = dao.Model.StatusOrders.ToList();
+                        }
+
+                        @Html.DropDownList("StatusID", new SelectList(lst, "ID", "Name", od.StatusID), new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" tabindex="3" onclick="updateStatus()">Lưu</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="4">
+                        Hủy
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#StatusID').select2();
+    })
+    function updateStatus()
+    {
+        var statusid = $('#StatusID').val();
+        $.ajax({
+            url: "@Url.Content("/Admin/Order/FnUpdateStatus")",
+            type: "POST",
+            data: {id:'@od.ID',statusId:statusid},           
+            success: function (data) {
+                if(data.Code==1)
+                {
+                    
+                    $('#ModalStatus').modal('hide');
+                    loadTable();
+                }
+
+            }
+        });
+
+    }
+</script>

@@ -1,0 +1,402 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .row-header {
+        background-color: #f1f5f9 !important;
+    }
+
+    #datatablePreOrder_processing, #datatablePreOrder_waiting, #datatablePreOrder_popup {
+        border-collapse: collapse !important;
+    }
+
+    .row-noneborder-bottom {
+        border-top: 3px solid #3c8dbc !important;
+        border-left: 3px solid #3c8dbc !important;
+        border-right: 3px solid #3c8dbc !important;
+    }
+
+    .row-noneborder-top {
+        border-bottom: 3px solid #3c8dbc !important;
+        border-left: 3px solid #3c8dbc !important;
+        border-right: 3px solid #3c8dbc !important;
+    }
+
+    .select2-container--default {
+        width: 100% !important;
+    }
+
+        .select2-container--default .select2-selection--single {
+            border-radius: 0px !important;
+            height: 34px !important;
+        }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-master list-panel" id="list-panel">
+            <form id="frmOrderSearch">
+                <div class="panel-heading list-panel-heading">
+                    <div class="col-lg-3">
+
+                        <div class="form-group">
+                            <label for="HoTen">Ngày Tạo</label>
+                            <div class="input-group" id="dateRange_container">
+                                <input type="text" class="form-control " id="dateRange" name="dateRange" placeholder="Chọn khoảng thời gian" value="@DateTime.Now.AddDays(-7).ToString("dd/MM/yyyy") - @DateTime.Now.ToString("dd/MM/yyyy")" readonly="readonly">
+                                <span class="input-group-addon input-group-addon-preorder"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                            </div>
+
+                            <input type="hidden" id="StartDate" name="StartDate" value="@DateTime.Now.AddDays(-30).ToString("yyyy/MM/dd")">
+                            <input type="hidden" id="EndDate" name="EndDate" value="@DateTime.Now.ToString("yyyy/MM/dd")">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label>
+                            Tìm Kiếm
+                        </label>
+                        <div class="input-group input-group pull-right">
+                            <input type="text" class="form-control" id="Info" name="Info" placeholder="Tên tài khoản">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary btn-flat" onclick="loadTable()">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Tìm kiếm
+                                </button>
+                            </span>
+                          
+                        </div>
+
+                    </div>
+                    <div class="col-md-3" style="margin-top:25px">
+                        <button type="button" class="btn btn-primary btn-flat" id="btnExcel" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Đang Xử Lý..." onclick="excelOrderShop()">
+                            <i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="panel-body">
+                <table id="tbOrder" class="table table-striped" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Mã DH</th>
+                            <th>Ngày Tạo</th>
+                            <th>Họ Tên</th>
+                            <th>Số Điện Thoại</th>
+                            <th>Địa Chỉ</th>
+                            <th>Tổng Tiền</th>
+                            <th>Trạng Thái</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Areas/Admin/Scripts/form2obj.js"></script>
+<link href="~/Areas/Content/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+<script src="~/Areas/Content/plugins/daterangepicker/moment.js"></script>
+<script src="~/Areas/Content/plugins/daterangepicker/daterangepicker.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#selectType').select2({
+
+        });
+
+        loadTable();
+        $("#dateRange_container").daterangepicker({
+            "autoApply": true,
+            autoUpdateInput: false,
+            defaultDate: '',
+            format: "DD/MM/YYYY",
+            locale: {
+                format: "DD/MM/YYYY",
+                customRangeLabel: "Tùy Chọn",
+                applyLabel: 'Chọn',
+                cancelLabel: "Xóa"
+            },
+            language: 'vi',
+            ranges: {
+                "Hôm Nay": [moment(), moment()],
+                "Hôm Qua": [moment().subtract(1, "days"), moment().subtract(1, "days")],
+                "7 Ngày Trước": [moment().subtract(6, "days"), moment()],
+                "30 Ngày Trước": [moment().subtract(29, "days"), moment()],
+                "Tháng Này": [moment().startOf("month"), moment().endOf("month")],
+                "Tháng Trước": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
+            }
+        });
+
+        $('#dateRange_container').on('apply.daterangepicker', function (ev, picker) {
+            $('#dateRange').val(picker.startDate.format('DD/MM/YYYY') + '-' + picker.endDate.format('DD/MM/YYYY'));
+            $('#StartDate').val(picker.startDate.format('YYYY/MM/DD'));
+            $('#EndDate').val(picker.endDate.format('YYYY/MM/DD'));
+            loadTable();
+        });
+
+        $('#dateRange_container').on("cancel.daterangepicker", function () {
+            $('#dateRange').val("");
+
+        })
+
+    });
+
+    function format(d) {
+        return '<div id="DetailContent" class="DetailContent" style="padding: 11px;background:white"></div>';
+    }
+    var table = null;
+    function loadTable() {
+        table = $('#tbOrder').DataTable({
+            pageLength: 25,
+            "bDestroy": true,
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "/Admin/Order/GetListOrder",
+                "type": "POST",
+                "data": function (d) {
+                    var form = $("#frmOrderSearch").serializeObject();
+                    var array = $.extend({}, d, form);
+                    return array;
+                },
+            },
+            "columns": [
+                {
+                    "data":"OD_ID"
+                },
+                 {
+                     "data": "DateCreate",
+                     'render': function (data, type, full, meta) {
+                         var html = convertDatetime(full.DateCreate);
+                         return html;
+                     }
+                 },
+                        {
+                            'render': function (data, type, full, meta) {
+                                var html = '<a href="#" id="username">' + full.FullName + '</a>';
+                                return html;
+                            }
+                        },
+                            { "data": "PhoneNumber" },
+                              { "data": "Address" },
+                               {
+                                   'render': function (data, type, full, meta) {
+                                       var html = showMoney(full.TotalAmount);
+                                       return html;
+                                   }
+                },
+                             { "data": "StatusName" },
+                        {
+                            targets: 'no-sort',
+                            orderable: false,
+                            'class': 'text-center',
+                            'width': '10%',
+                            'render': function (data, type, full, meta) {
+                                var html = '<button type="button"  style="margin-right: 10px;" class="btn btn-warning btn-xs" title="Chi tiết"  onclick="getDetail(this)"><i class="fa fa-list-ul" aria-hidden="true"></i></button>' +
+                                     '<button type="button" class="btn  btn-danger btn-xs" title="Cập nhật trạng thái" onclick="Edit(this,' + full.ID + ')"><i class="glyphicon glyphicon-edit"></i></button> ';
+                                return html;
+                            }
+                        }
+            ],
+            "paging": true,
+            "lengthChange": true,
+            "searching": false,
+            "ordering": true,
+            "info": false,
+            "autoWidth": false,
+            "dom": '<"top"i>rt<"bottom row"<"col-md-3"l><"col-md-9"<"pullright"p>>><"clear">',
+            "createdRow": function (row, data, index) {
+                $(row).addClass('Orderclass');
+
+            }
+        });
+    }
+    function OnBegin() {
+    }
+    function OnSuccess(data) {
+        if (data.Code === 1) {
+            $('#ModalAccountType').modal('hide');
+            var table = $('#tbAccountType').DataTable();
+            if (data.mode === 'ADD') {
+                table.row.add(data.data).draw(false);
+            } else {
+                loadTable();
+            }
+            showSuccess("Thành Công", data.message);
+        } else {
+            showError('Lỗi', data.message);
+        }
+
+    }
+    function Edit(thiz, id) {
+ 
+           $.ajax({
+                url: "/Admin/Order/UpdateStatus",
+                method: "POST",
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    $("#popupContainer1").html(data);
+                    $("#ModalStatus").modal("show");
+                }
+            });
+       
+    }
+
+    function convertDatetime(input, fullDateTime, ampm, format, showsecond) {
+        if (format == null || format == "") {
+            format = 'dmy';
+        }
+
+        if (showsecond == null)
+            showsecond = false;
+
+        if (input == null || input == "")
+            return "";
+        var time = "";
+        var value = new Date(parseInt(input.replace(/(^.*\()|([+-].*$)/g, '')));
+        var day = value.getDate() > 9 ? value.getDate() : "0" + value.getDate();
+        var month = (value.getMonth() + 1) > 9 ? (value.getMonth() + 1) : "0" + (value.getMonth() + 1);
+        var year = value.getFullYear();
+
+        var gio = value.getHours();
+        if (ampm) {
+            var time = gio >= 12 ? 'PM' : 'AM';
+            gio = gio % 12;
+            gio = gio ? gio : 12;
+        }
+        var hour = gio > 9 ? gio : "0" + gio;
+        var minute = value.getMinutes() > 9 ? value.getMinutes() : "0" + value.getMinutes();
+        var second = value.getSeconds() > 9 ? value.getSeconds() : "0" + value.getSeconds();
+
+        var result = "";
+        if (format == "dmy") {
+            result = day + "/" + month + "/" + year;
+        } else if (format == "mdy") {
+            result = month + "/" + day + "/" + year;
+        } else if (format == "ddmm") {
+            result = day + "/" + month;
+        }
+        else {
+            result = year + "/" + month + "/" + day;
+        }
+
+        if (fullDateTime) {
+            if (ampm)
+                return result + " " + hour + ":" + minute + (showsecond ? (":" + second) : "") + " " + time;
+            return result + " " + hour + ":" + minute + (showsecond ? (":" + second) : "");
+        }
+        return result;
+    }
+    function getDetail(thiz) {
+        $('.DetailContent').parent().parent().remove();
+        $('.row-noneborder-bottom').removeClass('row-noneborder-bottom');
+        var tr = $(thiz).parent().parent();
+        var row = table.row(tr);
+
+        $("#tbOrder  .Orderclass").each(function (index) {
+            if ($(this).is(tr) == false) {
+                var row2 = table.row(this);
+                row2.child.hide();
+                $(this).removeClass('shown');
+                $(this).removeClass('row-noneborder-bottom');
+                $(this).removeClass('row-header');
+            }
+        });
+        if (row.child.isShown()) {
+            row.child.hide();
+            tr.removeClass('shown');
+            tr.removeClass('row-noneborder-bottom');
+            tr.removeClass('row-header');
+        }
+        else {
+            row.child(format(row.data())).show();
+            var data = table.row(tr).data();
+            if (data != undefined) {
+                showDetail(data.ID);
+            }
+            var styleChild = $('#DetailContent').parent();
+            styleChild.addClass('row-noneborder-top');
+            tr.addClass('shown');
+            tr.addClass('row-noneborder-bottom');
+            tr.addClass('row-header');
+        }
+    }
+    function showDetail(id) {
+        $.ajax({
+            type: "POST",
+            url: '/Admin/Order/ViewDetail',
+            data: { id: id },
+        }).success(function (reponse) {
+            $('#DetailContent').html(reponse);
+        });
+    }
+    function showMoney(input) {
+        input += '';
+        x = input.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
+    }
+    function Remove(thiz, id) {
+        (new PNotify({
+            title: 'Xác nhận',
+            text: 'Bạn muốn xóa đơn hàng này ?',
+            icon: 'glyphicon glyphicon-question-sign',
+            styling: 'bootstrap3',
+            hide: false,
+            confirm: {
+                confirm: true
+            },
+            buttons: {
+                closer: false,
+                sticker: false
+            },
+            history: {
+                history: false
+            }
+        })).get().on('pnotify.confirm', function () {
+            $.ajax({
+                type: "POST",
+                url: '/Admin/Order/Delete',
+                data: { id: id },
+                success: function (data) {
+                    if (data.Code === 1) {
+                        $('#tbOrder').DataTable().row($(thiz).parents('tr')).remove().draw();
+                        showSuccess(data.message);
+                    } else {
+                        showError(data.message);
+                    }
+
+                }
+            });
+        }).on('pnotify.cancel', function () {
+        });
+    }
+    function excelOrderShop() {
+        $('#btnExcel').button('loading');
+        var fd = new FormData(document.getElementById("frmOrderSearch"));
+        $.ajax({
+            url: "@Url.Content("/Admin/Order/ExportExcel")",
+            type: "POST",
+            data: fd,
+            enctype: 'multipart/form-data',
+            processData: false,  // tell jQuery not to process the data
+            contentType: false,   // tell jQuery not to set contentType
+        }).success(function (data) {
+            if (data.Code == 1) {
+                window.location = data.Url;
+            }
+            $('#btnExcel').button('reset');
+        })
+        return false;
+    }
+</script>

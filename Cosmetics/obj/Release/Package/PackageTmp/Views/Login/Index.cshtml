@@ -1,0 +1,90 @@
+﻿@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<link href="~/Areas/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Areas/Content/dist/css/AdminLTE.css" rel="stylesheet" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <img src="~/Images/logo.png" />
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+
+            <form id="frmLogin">
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" name="UserName" id="UserName" placeholder="UserName">
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" name="PassWord" id="PassWord" placeholder="Password">
+
+                </div>
+                <div class="row">
+
+                    <div class="col-xs-4">
+                        <button type="button" onclick="fnLogin()" class="btn btn-primary btn-block btn-flat pull-right">Sign In</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+
+        </div>
+        <!-- /.login-box-body -->
+    </div>
+    <!-- /.login-box -->
+
+</body>
+
+<script>
+     function validateContact() {
+
+    var check = true;
+
+        if ($('#UserName').val() == "") {
+            toastr.error('Please enter your UserName');
+              check = false
+        }
+
+
+        if ($('#PassWord').val() == "") {
+            toastr.error('Please enter your Password');
+              check = false
+        }
+
+
+
+    return check;
+    }
+    function fnLogin() {
+        var check = validateContact();
+        if (check) {
+             var fd = new FormData(document.getElementById("frmLogin"));
+            $.ajax({
+                url: "@Url.Content("/Login/Login")",
+                type: "POST",
+                data: fd,
+                enctype: 'multipart/form-data',
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,   // tell jQuery not to set contentType.
+                success: function (data) {
+                    if (data.Code == -1) {
+                        toastr.error('Username already exists in the system')
+                    }
+                    else if (data.Code == 0) {
+                        toastr.error('password is incorrect');
+                    }
+                    else {
+                      
+                           window.location = "/Admin/Product";
+
+                    }
+
+        }
+     });
+    }
+   }
+</script>

@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "_Header";
+         var cart   = NongSan.Models.ShoppingCart.Cart;
+}
+    <header id="header">
+       
+
+        <!-- Header Top -->
+        <div class="header-top">
+            <div class="container">
+                <div class="row margin-0">
+                    <div class="col-lg-2 col-md-2 col-sm-12 padding-0">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a href="/">
+                                <img class="img-responsive" src="/Images/logo.png" alt="Logo">
+                            </a>
+                        </div>
+
+                        <span id="toggle-mobile-menu"><i class="zmdi zmdi-menu"></i></span>
+                    </div>
+
+                    <div class="col-lg-7 col-md-7 col-sm-12 padding-0">
+                        <!-- Main Menu -->
+                        <div id="main-menu">
+                            <ul class="menu">
+                                <li class="dropdown">
+                                    <a href="/" title="Homepage">Home</a>
+                                    
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="/Product/List" title="Product">Product</a>
+                                  
+                                </li>
+ 
+
+                                <li class="dropdown">
+                                    <a>Page</a>
+                                    <div class="dropdown-menu">
+                                        <ul class="has-sub">
+                                            <li><a href="/Customer/ListOrder" title="Blog List - Left Sidebar 1">Cart</a></li>
+                                            <li><a href="/Customer/Index" title="Blog List - Left Sidebar 1">User</a></li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="/gioi-thieu">About Us</a>
+                                </li>
+
+                                <li>
+                                    <a href="/lien-he">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-12 padding-0">
+                        <!-- Cart -->
+                        <div class="block-cart dropdown">
+                            <div class="cart-title" onclick="window.location='/gio-hang'">
+                                <i class="fa fa-shopping-basket"></i>
+                                <span class="cart-count" href="/gio-hang">@cart.Count</span>
+                            </div>
+
+                           
+                        </div>
+
+                        <!-- Search -->
+                        <div class="form-search">
+                            <form action="/Search" method="get">
+                                <input type="text" name="query" class="form-input" placeholder="Search">
+                                <button type="submit" class="fa fa-search"></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>

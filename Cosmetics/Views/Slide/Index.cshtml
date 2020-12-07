@@ -1,0 +1,21 @@
+﻿@model List<NongSan.Models.Slide>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<div class="section slideshow">
+    
+        <div class="tiva-slideshow-wrapper">
+            <div id="tiva-slideshow" class="nivoSlider">
+                @foreach (var item in Model)
+                {
+                    <a href="#">
+                        <img class="img-responsive" src="@item.Image" alt="Slideshow Image">
+                    </a>
+                }
+ 
+            </div>
+        </div>
+     
+</div>

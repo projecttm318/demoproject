@@ -1,0 +1,51 @@
+﻿@model NongSan.Models.Policy
+@{
+    var lst = ViewData["lstRelease"] as List<NongSan.Models.New>;
+    ViewBag.Title = Model.Name;
+}
+<style>
+    .details-product span, details-product p
+    {
+        font-family:"Quicksand",sans-serif !important;
+    }
+</style>
+<div class="breadcrumb_background margin-bottom-40">
+    <div class="title_full">
+        <div class="container a-center">
+            <p class="title_page">@Model.Name</p>
+        </div>
+    </div>
+    <section class="bread-crumb">
+        <span class="crumb-border"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 a-center">
+                    <ul class="breadcrumb">
+                        <li class="home">
+                            <a href="/"><span>Trang chủ</span></a>
+                            <span class="mr_lr">&nbsp;<i class="fa fa-angle-right"></i>&nbsp;</span>
+                        </li>
+
+                     
+                        <li><strong><span>@Model.Name</span></strong></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<section class="product margin-top-40" itemscope itemtype="http://schema.org/Product">
+    <div class="container">
+        <div class="row">
+            <div class="details-product">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="rows">
+                        @Html.Raw(Model.Content)
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

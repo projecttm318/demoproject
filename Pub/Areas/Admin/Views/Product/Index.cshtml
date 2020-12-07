@@ -1,0 +1,177 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-master list-panel" id="list-panel">
+            <form id="frmProductSearch">
+                <div class="panel-heading list-panel-heading">
+                    @*<div class="col-md-3 search-top">
+                            @{
+
+                                var lstCate = dao.Model.Categories.Where(f => f.IsDelete == false).ToList();
+                                lstCate.Insert(0, new Cubetech.TrustSales.Models.Category() { ID = 0, Name = "Phân Loại" });
+                            }
+                            @Html.DropDownList("CategorySearch", new SelectList(lstCate, "ID", "Name"), new { @class = "form-control col-preorder-input", @onchange = "reloadSearchTable()" })
+                        </div>*@
+                    <div class="col-md-6 search-top">
+                        <div class="input-group input-group pull-right">
+                            <input type="text" class="form-control input-sm" id="Info" name="Info" placeholder="Mã, Tên Sản Phẩm">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn bg-green-custom btn-sm"  onclick="loadTable()">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Tìm kiếm
+                                </button>
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="col-md-2 pull-right search-top">
+
+                        <a href="/Admin/Product/AddEditProduct" class="btn btn-primary  refresh-button btn-sm" id="refresh-button" style="margin-right:10px">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Thêm mới
+                        </a>
+                    </div>
+                </div>
+            </form>
+            <div class="panel-body">
+                <table id="tbProduct" class="table table-striped" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            @*<th>Hình Ảnh</th>*@
+                            <th>Tên Sản Phẩm</th>
+                            <th>Giá</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script>
+        $(function () {
+            loadTable();
+        });
+        function loadTable() {
+            $("#Info").val($.trim($("#Info").val()));
+            var table = $('#tbProduct').DataTable({
+                "bDestroy": true,
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "url": "/Admin/Product/GetListProduct",
+                    "type": "POST",
+                    "data": function (d) {
+                        return $.extend({}, d, {
+                            'Info': $('#Info').val()
+                        })
+                    }
+                },
+                "columns": [
+                     //{
+                     //    "data": "Image",
+                     //    'render': function (data, type, full, meta) {
+                     //        var html = '<img src="' + full.Image + '" style="width:50px;height:50px"/>';
+                     //        return html;
+                     //    }
+                     //},
+                             { "data": "ProductName" },
+
+                                      {
+                                          "data": "Price",
+                                          'render': function (data, type, full, meta) {
+                                              return showMoney(full.Price);
+                                          }
+                                      },
+                            {
+                                targets: 'no-sort',
+                                orderable: false,
+                                'width': '10%',
+                                'render': function (data, type, full, meta) {
+                                    var html = '<a href="/Admin/Product/AddEditProduct/' + full.Id + '" style="margin-right: 10px;" class="btn btn-primary  refresh-button btn-xs" title="Cập Nhật" ><i class="glyphicon glyphicon-edit"></i></a>' +
+                                                '<button type="button" class="btn  bg-grey-custom btn-xs" style="margin-right: 10px;" title="Xóa" onclick="Remove(this,' + full.Id + ')"><i class="glyphicon glyphicon-trash"></i></button> ';
+                                    return html;
+                                }
+                            }
+                ],
+                "scrollCollapse": true,
+                "scrollX": true,
+                "paging": true,
+                "lengthChange": true,
+                "searching": false,
+                "ordering": true,
+                "info": false,
+                "autoWidth": false,
+                "dom": '<"top"i>rt<"bottom row"<"col-md-3"l><"col-md-9"<"pullright"p>>><"clear">'
+            });
+        }
+
+        function Remove(thiz, id) {
+            (new PNotify({
+                title: 'Xác nhận',
+                text: 'Bạn có chắc chắn muốn xóa?',
+                icon: 'glyphicon glyphicon-question-sign',
+                styling: 'bootstrap3',
+                hide: false,
+                confirm: {
+                    confirm: true
+                },
+                buttons: {
+                    closer: false,
+                    sticker: false
+                },
+                history: {
+                    history: false
+                }
+            })).get().on('pnotify.confirm', function () {
+                $.ajax({
+                    type: "POST",
+                    url: '/Admin/Product/Delete',
+                    data: { id: id },
+                    success: function (data) {
+                        if (data.Code === 1) {
+                            $('#tbProduct').DataTable().row($(thiz).parents('tr')).remove().draw();
+                            showSuccess(data.message);
+                        } else {
+                            showError(data.message);
+                        }
+
+                    }
+                });
+            }).on('pnotify.cancel', function () {
+            });
+        }
+    </script>
+}
+<div class="modal fade" id="imagesManage" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Quản Lý Hình Ảnh</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div id="imageList"></div>
+
+                </div>
+                <input type="button" id="btnChooImage" class="btn btn-primary" value="Chọn Ảnh" style="margin-top:3px" />
+                <input type="hidden" id="hidProductId" value="0" />
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnSaveImage">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

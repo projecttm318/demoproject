@@ -1,0 +1,198 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Quản Lý User</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="tbUser" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Họ Tên</th>
+                                <th>UserName</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th><button type="button" data-toggle="modal" data-target="#ModalUser" onclick="UpdateUser(this,'')" class="btn btn-success btn-xs" style="text-align:center"><i class="fa fa-plus" style="color:white" aria-hidden="true"></i></button></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<div class="modal fade" id="ModalUser" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="UserId" id="UserId" value="" />
+                <input type="hidden" name="mode" id="mode" value="" />
+                <div class="form-group">
+                    <label for="Name">Họ Tên</label>
+                    <input type="text" class="form-control" required id="FullName" name="FullName" placeholder="Họ Tên" tabindex="1">
+                </div>
+                <div class="form-group">
+                    <label for="Name">Tên</label>
+                    <input type="text" class="form-control" required id="UserName" name="UserName" placeholder="UserName" tabindex="1">
+                </div>
+                <div class="form-group">
+                    <label for="Name">Pass</label>
+                    <input type="text" class="form-control" required id="PassWord" name="PassWord" placeholder="PassWord" tabindex="1">
+                </div>
+                <div class="form-group">
+                    <label for="Name">Phone</label>
+                    <input type="text" class="form-control" required id="Phone" name="Phone" placeholder="Phone" tabindex="1">
+                </div>
+                <div class="form-group">
+                    <label for="Name">Email</label>
+                    <input type="text" class="form-control" required id="Email" name="Email" placeholder="Email" tabindex="1">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" tabindex="3" onclick="saveUser()">Lưu</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="4">
+                    Hủy
+                </button>
+                <div tabindex="5" onfocus="document.querySelector('[autofocus]').focus()"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            LoadTable();
+        });
+        function LoadTable() {
+            $.ajax({
+                type: "POST",
+                url: '/Admin/User/GetListUser',
+                success: function (data) {
+                    $('#tbUser').DataTable({
+                        data: data,
+                        destroy: true,
+                        columns: [
+                                    { "data": "FullName" },
+                            { "data": "UserName" },
+                            { "data": "Phone" },
+                                              { "data": "Email" },
+                                    {
+                                        targets: 'no-sort',
+                                        orderable: false,
+                                        'class': 'text-center',
+                                        'width': '10%',
+                                        'render': function (data, type, full, meta) {
+                                            var html = ' <button type="button" class="btn btn-primary btn-xs" title="Xóa"  onclick="Remove(this,' + full.UserId + ')"><i class="fa  fa-database"></i></button> ';
+                                            return html;
+                                        }
+                                    }
+                        ],
+
+                    });
+                }
+            });
+
+        }
+
+        function UpdateUser(thiz, id) {
+            if (id == '') {
+                $('.modal-title').html('Thêm mới Menu');
+                $('#mode').val('ADD');
+                $('.modal-title').html('Thêm User');
+                $('#UserId').val(0);
+            } else {
+                var table = $('#tbUser').DataTable();
+                var data = table.row($(thiz).parent().parent()).data();
+                $('.modal-title').html('Cập nhật User');
+                $('#mode').val('UPDATE');
+                $('#UserId').val(data.UserId);
+                $('#UserName').val(data.UserName);
+                $('#PassWord').val(data.PassWord);
+                $('#FullName').val(data.FullName);
+                $('#Phone').val(data.Phone);
+                  $('#Email').val(data.Email);
+
+            }
+        }
+        function saveUser() {
+            var obj = {
+                UserName: $('#UserName').val(),
+                PassWord: $('#PassWord').val(),
+                UserId: $('#UserId').val(),
+                FullName: $('#FullName').val(),
+                Phone: $('#Phone').val(),
+                 Email: $('#Email').val()
+
+            }
+            $.ajax({
+                type: "POST",
+                url: '/Admin/User/Update',
+                data: { item: obj, mode: $('#mode').val() },
+                success: function (data) {
+                    if (data.Code == 1) {
+                        $('#ModalUser').modal('hide');
+                        showSuccess(data.message);
+                        LoadTable();
+                    }
+                    else {
+                        showError(data.message);
+                    }
+                }
+            });
+        }
+         function Remove(thiz, id) {
+            (new PNotify({
+                title: 'Xác nhận',
+                text: 'Bạn muốn xóa ?',
+                icon: 'glyphicon glyphicon-question-sign',
+                styling: 'bootstrap3',
+                hide: false,
+                confirm: {
+                    confirm: true
+                },
+                buttons: {
+                    closer: false,
+                    sticker: false
+                },
+                history: {
+                    history: false
+                }
+            })).get().on('pnotify.confirm', function () {
+                $.ajax({
+                    type: "POST",
+                    url: '/Admin/User/Delete',
+                    data: { id: id },
+                    success: function (data) {
+                        if (data.Code === 1) {
+                            LoadTable();
+                
+                         showSuccess(data.message);
+                        } else {
+                            showError(data.message);
+                        }
+
+                    }
+                });
+            }).on('pnotify.cancel', function () {
+            });
+        }
+    </script>
+}

@@ -1,0 +1,246 @@
+﻿@model NongSan.Models.Product
+@{
+    ViewBag.Title = "AddEditProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .select2-container--default .select2-selection--single {
+        border-radius: 0px !important;
+        height: 34px !important;
+    }
+
+    .fileupload-item .fa-trash-o {
+        padding: 0 14px !important;
+    }
+
+    .fileupload-item img {
+        float: left;
+        height: 70px;
+    }
+</style>
+
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h4 class="box-title">Cập Nhật Sản Phẩm</h4>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+
+        <input type="hidden" name="mode" id="mode" value="@ViewData["Mode"]" />
+        <input type="hidden" name="Id" id="Id" value="@Model.Id" />
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="NoiDung">Danh Mục</label>
+                @{
+                    NongSan.Areas.Admin.DAO.CategoryDAO dao = new NongSan.Areas.Admin.DAO.CategoryDAO();
+                    var lst = dao.Model.Categories.ToList();
+                }
+                
+                @Html.DropDownList("CategoryId", new SelectList(lst, "Id", "CategoryName", Model.CategoryId), new { @class="form-control"})
+
+            </div>
+            <div class="form-group">
+                <label for="NoiDung">Tên Sản Phẩm</label>
+                <input type="text" class="form-control" name="ProductName" id="ProductName" placeholder="Tên Sản Phẩm" tabindex="6" value="@Model.ProductName">
+            </div>
+            <div class="form-group">
+                <label for="NoiDung">Giá</label>
+                <input type="text" class="form-control" name="Price" id="Price" placeholder="Giá" tabindex="6" value="@Model.Price">
+            </div>
+            
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+                <label for="NoiDung">Nội Dung</label>
+                <textarea rows="2" style="resize: none;" class="form-control" name="Content" id="Content" placeholder="Ghi chú" tabindex="7">@Model.Content</textarea>
+            </div>
+           
+           
+            <div class="form-group">
+                <label for="NoiDung">Meta Title</label>
+                <textarea rows="2" style="resize: none;" class="form-control" name="MetaTitle" id="MetaTitle" placeholder="MetaTitle" tabindex="7">@Model.MetaTitle</textarea>
+            </div>
+            <div class="form-group">
+                <label for="NoiDung">Meta Keyword</label>
+                <textarea rows="2" style="resize: none;" class="form-control" name="MetaKeyWord" id="MetaKeyWord" placeholder="Ghi chú" tabindex="7">@Model.MetaKeyWord</textarea>
+            </div>
+            <div class="form-group">
+                <label for="NoiDung">Meta Description</label>
+                <textarea rows="2" style="resize: none;" class="form-control" name="MetaDescription" id="MetaDescription" placeholder="Ghi chú" tabindex="7">@Model.MetaDescription</textarea>
+            </div>
+           
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Hình Đại Diện (kích thước 300x300px):</label>
+
+                <div class="fileupload-item">
+                    <input type="file" style="display:none" name="fileUpload" id="file" onchange="uploadFileDetail('file', 'ImagesDisplay', 'Image')" />
+                    <img id="ImagesDisplay" src="@Model.Image" />
+                    <button type="button" class="btn bg-pink-custom pull-right btn-sm btn-flat" onclick="deleteImagesDetail('ImagesDisplay', 'Image')"><i class="fa fa-trash-o" aria-hidden="true"></i></button><br /><br />
+                    <label type="button" class="btn bg-green-custom pull-right btn-sm btn-flat" for="file">
+                        <i class="fa fa-camera" aria-hidden="true"></i> Ảnh
+                    </label>
+                    <input type="hidden" name="Image" id="Image" value="@Model.Image" />
+                </div><hr style="margin-top:36px" />
+
+
+            </div>
+            <div class="clearfix"></div>
+           
+
+        </div>
+        <input type="button"   value="Thêm Mới" onclick="saveProduct()" class="pull-right" />
+
+    </div>
+</div>
+
+
+
+@section scripts
+{
+
+    <script>
+        $(document).ready(function () {
+             
+            $('#CategoryId').select2({
+                placeholder: 'Chọn Danh Mục Sản Phẩm',
+              
+            });
+            var ckeditor;
+            function createEditor(languageCode, id) {
+                var editor = CKEDITOR.replace(id, { language: languageCode });
+            }
+            $(function () {
+                createEditor('vi', 'Content');
+               
+            });
+            
+        })
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#Image').val(url);
+            };
+            finder.popup();
+        })
+        ListImage = [];
+        function chooseImage() {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $("#imageList").append('<div class="col-md-3"><img src="' + url + '" width="100" height="70" /><a style="margin-left:2px" href="#" class="btnDeleteImage">Xóa</a></div>')
+                var Image = {
+                    Image: url
+                };
+                ListImage.push(Image);
+
+            };
+            finder.popup();
+
+        }
+        $(".btnDeleteImage").click(function (e) {
+            e.preventDefault();
+            $(this).parent().remove();
+        });
+        
+        function saveProduct() {
+            var product = {
+                Id: $('#Id').val(),
+                CategoryId: $('#CategoryId').val(),
+                ProductName: $('#ProductName').val(),
+                Price: $('#Price').val(),
+                Image: $('#Image').val(),
+                Content: CKEDITOR.instances['Content'].getData(),
+                MetaKeyWord: $('#MetaKeyWord').val(),
+                MetaDescrition: $('#MetaDescrition').val(),
+                MetaTitle: $('#MetaTitle').val(),
+                ShortDescription: $('#ShortDescription').val(),
+                Images1: $('#Images1').val(),
+                Images2: $('#Images2').val(),
+                Images3: $('#Images3').val(),
+                Images4: $('#Images4').val(),
+                Images5: $('#Images5').val(),
+                Images6: $('#Images6').val(),
+                
+                PixelFacebook: $('#PixelFacebook').val()
+
+            };
+            var mode = $('#mode').val();
+            var fm = { item: product, mode: mode };
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Product/SaveProduct",
+                data: JSON.stringify(fm),
+                cache: false, async: false,
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                processData: false,
+                success: function (data) {
+                    var table = $('#tbProduct').DataTable();
+                    if (data.Code == 1) {
+                        showSuccess(data.message);
+                        window.location.href = "/Admin/Product";
+                        table.ajax.reload();
+                    }
+                    else {
+                        showError(data.message);
+                    }
+
+                }
+            })
+        }
+        function Update() {
+            var id = $('#Id').val();
+            $.ajax({
+                Type: "POST",
+                url: "/Admin/Product/getImage",
+                data: { id: id },
+                success: function (data) {
+                    $.each(data, function (index, value) {
+                        $("#imageList").append('<div class="col-md-3" style= "margin-bottom:5px"><img src="' + value.Image + '" width="100" height="100" /><a style="margin-left:2px" href="#" class="btnDeleteImage" onclick="deleteImage(' + value.Id + ')"><i class="fa fa-times"></i></a></div>')
+                        var Image = {
+                            Image: value.Image
+                        };
+                        ListImage.push(Image);
+                    })
+
+                }
+
+            })
+        }
+        function uploadFileDetail(fileInput, inputDisplay, inputValue) {
+            var formData = new FormData();
+            var imageFile = document.getElementById(fileInput).files[0];
+            formData.append("file", imageFile);
+            $.ajax({
+                url: "/Admin/Product/Upload",
+                type: "POST",
+                data: formData,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false
+            }).success(function (data) {
+                if (data.Code == 1) {
+                    $('#' + inputValue).val(data.data);
+                    $('#' + inputDisplay).attr("src", data.data);
+                    $("#" + inputDisplay).css('display', 'block');
+                }
+                if (data.Code == 4) {
+                    showError('Lỗi', data.message);
+                }
+            });
+        }
+        function deleteImagesDetail(inputDisplay, inputValue) {
+            $('#' + inputValue).val('');
+            $('#' + inputDisplay).removeAttr("src");
+            $("#" + inputDisplay).css('display', 'none');
+        }
+
+    </script>
+
+}
